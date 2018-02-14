@@ -1,33 +1,25 @@
 <div ng-include='"./partials/inventory/inventoryNav.html"'></div>
-<main class="mdl-layout__content mdl-color--grey-100" ng-controller="InventoryCtrl">
-  <!-- Create New Item -->
-  <form action="#">
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" id="location-name" ng-model="location.name">
-      <label class="mdl-textfield__label" for="item-name">Location Tag</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="checkbox" id="location-pickable" ng-model="location.pickable">
-      <label class="mdl-textfield__label" for="item-name">Pickable Location?</label>
-    </div>
-    <!-- <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="part-number" ng-model="product.part_number">
-      <label class="mdl-textfield__label" for="part-number">Part Number</label>
-      <span class="mdl-textfield__error">Input is not a number!</span>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price" ng-model="product.price">
-      <label class="mdl-textfield__label" for="price">Price</label>
-      <span class="mdl-textfield__error">Input is not a number!</span>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="inventory-count" ng-model="product.inventory_count">
-      <label class="mdl-textfield__label" for="inventory-count">Inventory Count</label>
-      <span class="mdl-textfield__error">Input is not a number!</span>
-    </div> -->
-    <!-- Colored FAB button with ripple -->
-    <button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored" ng-click="addNewLocation(location)" value="save">
-      <i class="material-icons">add</i>
-    </button>
-  </form>
+<main ng-controller="InventoryCtrl">
+  <!-- Create New Location -->
+  <md-content layout-padding>
+      <form name="locationForm">
+
+          <md-input-container class="md-block" id="location-name" flex-gt-sm>
+            <label>Location Tag</label>
+            <input ng-model="location.name">
+            <div class="hint">SH1-A-01 (Bay-Shelf-Slot)</div>
+          </md-input-container>
+
+          <md-checkbox id="location-pickable" ng-model="location.pickable" arai-label="Pickable Loaction">
+            Pickable Location? {{location.pickable}}
+          </md-checkbox>
+
+          <md-checkbox id="location-active" ng-model="location.active" aria-label="Active Location">
+            Active Location? {{location.active}}
+          </md-checkbox>
+
+        <md-button type="button" class="md-fab md-primary md-mini" ng-click="addNewLocation(location)" value="save" aria-label="Add Location">
+          <md-icon><i class="material-icons">add</i></md-icon>
+        </md-button>
+      </form>
 </main>

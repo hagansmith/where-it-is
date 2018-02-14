@@ -1,20 +1,13 @@
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--middle">
-    <!-- Colored raised button -->
-    <a ng-href="#!/newProduct"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-      New Product
-    </button></a>
-    <!-- Colored raised button -->
-    <a ng-href="#!/editProduct"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-      Edit Product
-    </button></a>
-    <!-- Colored raised button -->
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-      Cycle Count
-    </button>
-    <!-- Colored raised button -->
-    <a ng-href="#!/newLocation"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-      New Location
-    </button></a>
-  </div>
-</div>
+<md-nav-bar
+  layout="row"
+  layout-align="center center"
+  layout-margin
+  flex class="layout-max-width"
+  md-selected-nav-item="currentNavItem"
+  nav-bar-aria-label="navigation links">
+  <md-nav-item md-nav-href="#!/newProduct" name="newProduct">New Product</md-nav-item>
+  <md-nav-item md-nav-href="#!/newLocation" name="newLocation">New Location</md-nav-item>
+  <md-nav-item md-nav-href="#!/viewLocations" name="viewLocations">View Locations</md-nav-item>
+  <md-nav-item md-nav-href="#!/editProduct" name="editProduct">Edit Product</md-nav-item>
+  <md-nav-item md-nav-href="#" name="cycleCount">Cycle Count</md-nav-item>
+</md-nav-bar>
