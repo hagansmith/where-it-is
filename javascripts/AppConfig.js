@@ -30,7 +30,11 @@ app.config(function($routeProvider){
       templateUrl: 'partials/inventory/newLocation.html',
       controller: 'InventoryCtrl'
     })
-    
+    .when("/viewLocations", {
+      templateUrl: 'partials/inventory/viewLocations.html',
+      controller: 'InventoryCtrl'
+    })
+
 
     .otherwise('/main');
 });

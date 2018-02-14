@@ -1,0 +1,25 @@
+<div ng-include='"./partials/inventory/inventoryNav.html"'></div>
+<main ng-controller="InventoryCtrl">
+  <!-- Create New Location -->
+  <md-content layout-padding>
+      <form name="locationForm" ng-repeat="location in locations">
+
+          <md-input-container class="md-block" id="location-name" flex-gt-sm>
+            <label>Location Tag</label>
+            <input ng-model="location.name">
+            <div class="hint">SH1-A-01 (Bay-Shelf-Slot)</div>
+          </md-input-container>
+
+          <md-checkbox id="location-pickable" ng-model="location.pickable" arai-label="Pickable Loaction">
+            Pickable Location? {{location.pickable}}
+          </md-checkbox>
+
+          <md-checkbox id="location-active" ng-model="location.active" aria-label="Active Location">
+            Active Location? {{location.active}}
+          </md-checkbox>
+
+        <md-button type="button" class="md-fab md-primary md-mini" ng-click="addNewLocation(location)" value="save" aria-label="Add Location">
+          <md-icon><i class="material-icons">add</i></md-icon>
+        </md-button>
+      </form>
+</main>

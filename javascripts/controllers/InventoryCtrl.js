@@ -5,18 +5,16 @@ app.controller("InventoryCtrl", function($rootScope, $scope, InventoryService) {
   const loadAllProducts = () => {
     InventoryService.getAllProducts().then((results) => {
       $scope.products = results;
-      console.log("products", results);
     });
   };
 
   const loadAllLocations = () => {
     InventoryService.getAllLocations().then((results) => {
-      $scope.locations = results;
-      console.log("locations", results);
+      $scope.locations = results.data;
     });
   };
 
-  //loadInventory();
+  loadAllLocations();
 
   $scope.addNewProduct = (product) => {
     InventoryService.postProduct(product);
