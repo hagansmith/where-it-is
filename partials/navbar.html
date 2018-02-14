@@ -1,0 +1,22 @@
+    <!-- Nav Buttons -->
+    <md-button class="md-icon-button" aria-label="Icon">
+      <md-icon md-svg-icon="">SB</md-icon>
+    </md-button>
+    <span class="title">Home</span>
+    <span flex class="layout-spacer"></span>
+    <md-button class="md-icon-button" aria-label="User">
+      <md-tooltip>User</md-tooltip>
+      <img src="user.png" style="width:24px;height:24px;"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Messages">
+      <md-tooltip>Messages</md-tooltip>
+      <img src="messages.png" style="width:24px;height:24px;"></md-icon>
+    </md-button>
+
+    <!-- Search -->
+    <md-input-container md-no-float class="md-accent">
+      <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+        <md-icon style="color:wheat" class="material-icons">&#xE8B6;</md-icon>
+      </label>
+      <input ng-model="searchInput" placeholder="Search here" style="color:wheat;padding-left:25px;margin-left:5px">
+    </md-input-container>

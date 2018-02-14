@@ -1,0 +1,23 @@
+<main layout="column" flex>
+  <!-- <div id="orders">
+    <container class="order" ng-repeat="order in orders">
+      <p>{{order.orderNumber}}</p>
+      <section class="orderItems" ng-repeat="item in order.items">
+        <img ng-src="{{item.imageUrl}}" height="70px">
+        <p>{{item.name}} {{item.quantity}}</p>
+      </section>
+    </container>
+  </div> -->
+
+      <div ng-cloak>
+          <md-content layout="column">
+            <md-virtual-repeat-container id="vertical-container" flex>
+                  <div md-virtual-repeat="item in infiniteItems" md-on-demand
+                       class="repeated-item" flex>
+                      {{item.name}}
+                  </div>
+              </md-virtual-repeat-container>
+          </md-content>
+      </div>
+
+</main>
