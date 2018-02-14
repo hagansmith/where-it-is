@@ -1,33 +1,52 @@
 <div ng-include='"./partials/inventory/inventoryNav.html"'></div>
-<!-- <div class="input-group input-group-sm col-xs-6 col-xs-offset-3">
-   <span class="input-group-addon glyphicon glyphicon-search" aria-hidden="true"></span>
-   <input type="text" class="form-control" placeholder="Search Products" ng-model="searchText">
-</div>
-<div id="products" ng-controller="InventoryCtrl">
-  <container class="product" ng-repeat="product in products">
-    <p>{{product.item_name}}</p>
-  </container>
-</div> -->
+<main ng-controller="InventoryCtrl">
+  <!-- Create New Item -->
+  <md-content layout-padding>
+    <form action="productForm" ng-repeat="product in products">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" id="item-name" >
+          <label>Item Name</label>
+          <input ng-model="product.item_name">
+        </md-input-container>
+      </div>
 
-<!-- Three Line List with secondary info and action -->
-<style>
-.demo-list-three {
-  width: 650px;
-}
-</style>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="part-number">
+          <label>Part Number</label>
+          <input ng-model="product.part_number">
+          <div class="hint">13 Digit ISBN</div>
+        </md-input-container>
+      </div>
 
-<ul class="demo-list-three mdl-list">
-  <li class="mdl-list__item mdl-list__item--three-line" ng-repeat="product in products">
-    <span class="mdl-list__item-primary-content">
-      <i class="material-icons mdl-list__item-avatar">person</i>
-      <span>{{product.part_number}}</span>
-      <span class="mdl-list__item-text-body">
-        {{product.item_name}}
-      </span>
-    </span>
-    <span class="mdl-list__item-secondary-content">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cost">
+          <label>Cost</label>
+          <input ng-model="product.price">
+          <div class="hint">$12.99</div>
+        </md-input-container>
+      </div>
 
-      <a class="mdl-list__item-secondary-action" href="#">{{product.inventory_count}}</a>
-    </span>
-  </li>
-</ul>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="inventory-location">
+          <label>Location</label>
+          <input ng-model="product.inventory_location">
+          <div class="hint">Input must be a number</div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="inventory-count">
+          <label>Inventory Count</label>
+          <input ng-model="product.inventory_count">
+          <div class="hint">Input must be a number</div>
+        </md-input-container>
+      </div>
+      <!-- Colored FAB button with ripple -->
+      <div layout-gt-sm="row">
+        <md-button type="button" class="md-fab md-primary md-mini" ng-click="updateProduct(product)" value="save" aria-label="Update Product">
+          <md-icon><i class="material-icons">update</i></md-icon>
+        </md-button>
+      </div>
+    </form>
+  </md-content>
+</main>

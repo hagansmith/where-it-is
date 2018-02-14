@@ -4,7 +4,12 @@ app.controller("InventoryCtrl", function($rootScope, $scope, InventoryService) {
 
   const loadAllProducts = () => {
     InventoryService.getAllProducts().then((results) => {
-      $scope.products = results;
+      Object.keys(results.data).forEach((key)=> {
+        if (results.data[key] != null){
+          results.data[key].id = key;
+        }
+      });
+      $scope.products = results.data;
     });
   };
 
@@ -18,11 +23,10 @@ app.controller("InventoryCtrl", function($rootScope, $scope, InventoryService) {
   };
 
   loadAllLocations();
+  loadAllProducts();
 
-  $scope.addNewProduct = (product) => {
-    InventoryService.postProduct(product);
-  };
 
+// Locations //
   $scope.addNewLocation = (location) => {
     InventoryService.postLocation(location);
     loadAllLocations();
@@ -40,8 +44,23 @@ app.controller("InventoryCtrl", function($rootScope, $scope, InventoryService) {
       console.log("error in deleteLocation");
     });
   };
-  // const getProducts = (text) => {
-  //   InventoryService.
-  // }
+
+// Products //
+  $scope.addNewProduct = (product) => {
+    InventoryService.postProduct(product);
+  };
+
+  $scope.updateProduct = (product) => {
+    InventoryService.putProduct(product);
+    loadAllLocations();
+  };
+
+  $scope.deleteProduct = (product) => {
+    InventoryService.deleteProduct(product).then((result) => {
+      loadAllProducts();
+    }).catch((err) => {
+      console.log("error in deleteProduct");
+    });
+  };
 
 });

@@ -1,29 +1,52 @@
 <div ng-include='"./partials/inventory/inventoryNav.html"'></div>
-<main class="mdl-layout__content mdl-color--grey-100" ng-controller="InventoryCtrl">
+<main ng-controller="InventoryCtrl">
   <!-- Create New Item -->
-  <form action="#">
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" id="item-name" ng-model="product.item_name">
-      <label class="mdl-textfield__label" for="item-name">Item Name</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="part-number" ng-model="product.part_number">
-      <label class="mdl-textfield__label" for="part-number">Part Number</label>
-      <span class="mdl-textfield__error">Input is not a number!</span>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price" ng-model="product.price">
-      <label class="mdl-textfield__label" for="price">Price</label>
-      <span class="mdl-textfield__error">Input is not a number!</span>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="inventory-count" ng-model="product.inventory_count">
-      <label class="mdl-textfield__label" for="inventory-count">Inventory Count</label>
-      <span class="mdl-textfield__error">Input is not a number!</span>
-    </div>
-    <!-- Colored FAB button with ripple -->
-    <button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored" ng-click="addNewProduct(product)" value="save">
-      <i class="material-icons">add</i>
-    </button>
-  </form>
+  <md-content layout-padding>
+    <form action="productForm">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" id="item-name" >
+          <label>Item Name</label>
+          <input ng-model="product.item_name">
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="part-number">
+          <label>Part Number</label>
+          <input ng-model="product.part_number">
+          <div class="hint">13 Digit ISBN</div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cost">
+          <label>Cost</label>
+          <input ng-model="product.price">
+          <div class="hint">$12.99</div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="inventory-location">
+          <label>Location</label>
+          <input ng-model="product.inventory_count">
+          <div class="hint">Input must be a number</div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="inventory-count">
+          <label>Inventory Count</label>
+          <input ng-model="product.inventory_count">
+          <div class="hint">Input must be a number</div>
+        </md-input-container>
+      </div>
+      <!-- Colored FAB button with ripple -->
+      <div layout-gt-sm="row">
+        <md-button type="button" class="md-fab md-primary md-mini" ng-click="addNewProduct(product)" value="save" aria-label="Add Product">
+          <md-icon><i class="material-icons">add</i></md-icon>
+        </md-button>
+      </div>
+    </form>
+  </md-content>
 </main>
