@@ -27,7 +27,6 @@ app.service("InventoryService", function ($http, $q, FIREBASE_CONFIG){
    };
 
    const putLocation = (location) => {
-     console.log(location);
      let locationObject = {
        "name" : location.name,
        "pickable" : location.pickable,
@@ -37,6 +36,11 @@ app.service("InventoryService", function ($http, $q, FIREBASE_CONFIG){
      return $http.put(`${FIREBASE_CONFIG.databaseURL}/locations/${lid}.json`, JSON.stringify(locationObject));
    };
 
-  return {getAllLocations, getAllProducts, postLocation, postProduct, putLocation};
+   const deleteLocation = (location) => {
+     let lid = location.id;
+     return $http.delete(`${FIREBASE_CONFIG.databaseURL}/locations/${lid}.json`);
+   };
+
+  return {deleteLocation, getAllLocations, getAllProducts, postLocation, postProduct, putLocation};
 
  });

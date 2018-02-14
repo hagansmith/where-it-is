@@ -25,14 +25,20 @@ app.controller("InventoryCtrl", function($rootScope, $scope, InventoryService) {
 
   $scope.addNewLocation = (location) => {
     InventoryService.postLocation(location);
+    loadAllLocations();
   };
 
   $scope.updateLocation = (location) => {
     InventoryService.putLocation(location);
+    loadAllLocations();
   };
 
   $scope.deleteLocation = (location) => {
-    InventoryService.deleteLocation(location);
+    InventoryService.deleteLocation(location).then((result) => {
+      loadAllLocations();
+    }).catch((err) => {
+      console.log("error in deleteLocation");
+    });
   };
   // const getProducts = (text) => {
   //   InventoryService.
